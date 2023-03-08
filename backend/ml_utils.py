@@ -1,6 +1,7 @@
 import requests
 import json
-from newspaper import Article
+from goose3 import Goose
+g= Goose()
 import readtime
 import openai
 import os
@@ -10,12 +11,10 @@ load_dotenv()
 
 def main_entities_main_article(url:str):
     try:
-        article = Article(url)
-        article.download()
-        article.parse()
+        article = g.extract(url = url)
     except:
         return ""
-    text_doc = article.text
+    text_doc = article.cleaned_text
 
     openai.api_key = os.getenv("OPENAI_API_KEY")
 
@@ -47,12 +46,11 @@ def get_arts(title):
     all_links = []
     for thing in response['items']:
         try:
-            art = Article(thing["link"])
-            art.download()
-            art.parse()
+            art = g.extract(url = thing["link"])
+           
         except:
             continue
-        text = art.text
+        text = art.cleaned_text
         read_time = str(readtime.of_text(text))
         dict = {"title": thing["title"],
                    "displayLink": thing["displayLink"],
