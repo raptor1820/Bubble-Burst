@@ -34,7 +34,6 @@ def main_entities_main_article(url:str):
     return title
 
 def get_arts(title):
-    #GET https://www.googleapis.com/customsearch/v1?key=AIzaSyBEkIbg_igQW74XXMsZ4I1ctjPjs-1AReM&cx=93ce7d57f86524684&q=lectures
     MY_API_KEY = os.getenv("MY_API_KEY")
     CX_KEY = os.getenv("CX_KEY")
     url_endpoint = "https://www.googleapis.com/customsearch/v1"
