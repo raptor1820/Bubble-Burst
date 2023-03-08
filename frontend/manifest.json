@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "Counteropinions",
+  "version": "1.0",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Counteropinions"
+  },
+  "permissions": ["tabs", "activeTab"]
+}
