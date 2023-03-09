@@ -1,15 +1,15 @@
 import requests
 import json
 from goose3 import Goose
-g= Goose()
 import readtime
 import openai
 import os
 from dotenv import load_dotenv
 load_dotenv()
+g= Goose()
 
 
-def main_entities_main_article(url:str):
+def get_title(url:str):
     try:
         article = g.extract(url = url)
     except:
@@ -66,8 +66,7 @@ def get_arts(title):
 
 def driver(url):
     print("url",url)
-    entities =main_entities_main_article(url)
-    title = entities
+    title =get_title(url)
     all_links = get_arts(title)
     print(all_links)
     return all_links
