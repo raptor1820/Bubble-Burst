@@ -1,7 +1,6 @@
 import requests
 import json
 from goose3 import Goose
-import readtime
 import openai
 import os
 from dotenv import load_dotenv
@@ -15,7 +14,7 @@ def get_title(url:str):
     except:
         return ""
     text_doc = article.cleaned_text
-
+    print(text_doc)
     openai.api_key = os.getenv("OPENAI_API_KEY")
 
     title = openai.Completion.create(
@@ -45,13 +44,14 @@ def get_arts(title):
     
     all_links = []
     for thing in response['items']:
-        try:
-            art = g.extract(url = thing["link"])
+        # try:
+        #     art = g.extract(url = thing["link"])
            
-        except:
-            continue
-        text = art.cleaned_text
-        read_time = str(readtime.of_text(text))
+        # except:
+        #     continue
+        # text = art.cleaned_text
+        # read_time = str(readtime.of_text(text))
+        read_time ="0 min"
         dict = {"title": thing["title"],
                    "displayLink": thing["displayLink"],
                       "link": thing["link"],
