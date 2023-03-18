@@ -1,25 +1,14 @@
-from fastapi import FastAPI
-import uvicorn
+from flask import Flask,request
+from flask_cors import CORS
 from ml_utils import driver
-from fastapi.middleware.cors import CORSMiddleware
-app = FastAPI()
-origins = ["*"]
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-@app.get("/")
-async def root(url):
-    print(url)
+app = Flask(__name__)
+CORS(app)
+@app.route("/")
+def root():
+    url  = request.args['url']
     try:
         return driver(url)
     except:
         return {"error": "error"}
     
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000, reload=True)

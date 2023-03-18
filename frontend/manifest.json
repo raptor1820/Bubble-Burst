@@ -1,10 +1,18 @@
 {
   "manifest_version": 3,
-  "name": "Counteropinions",
-  "version": "1.0",
+  "name": "Bubble Burst!",
+  "version": "0.0.1",
+  "description": "Bubble Burst!",
   "action": {
     "default_popup": "popup.html",
     "default_title": "Counteropinions"
   },
+  "icons": {
+    "16": "icon.png",
+    "32": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+
   "permissions": ["tabs", "activeTab"]
 }
