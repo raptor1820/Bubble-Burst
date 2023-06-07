@@ -17,21 +17,22 @@ body {
   /* justify-content: center; */
 }
 .outer {
-  height: max-content;
-  width: 100%;
-  display: flex;
+  height: 75rem;
+  width: 90%;
+
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  position: absolute;
-  bottom: 10px;
+  position: relative;
+  bottom: 5px;
+  left: 10px;
   opacity: 0;
-
   transition-duration: 1s;
+  overflow-y: scroll;
   transition-property: opacity;
 }
 .container {
-  height: 73px;
+  height: 75px;
   width: 90%;
   background-color: #ffebca;
   /* border: 1px solid burlywood; */
@@ -44,6 +45,8 @@ body {
   border-radius: 4px;
   position: relative;
   overflow: hidden;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .title {
   font-size: 17px;
@@ -115,4 +118,57 @@ body {
   display: flex;
   flex-direction: row;
   height: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 30px;
+}
+
+.button-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100px;
+  position: absolute;
+
+  right: 5px;
+  padding: 10px;
+  position: absolute;
+  top: -10px;
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 2s;
+  z-index: 1;
+}
+.button {
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  background-color: transparent;
+  border: 1px solid black;
+  box-shadow: 4px 4px 0px 0px #000;
+  font-family: "Varela Round", sans-serif;
+  margin: 5px;
+  text-align: center;
+  vertical-align: middle;
+}
+.anchors {
+  text-decoration: none;
+  color: black;
+  font-size: 15px;
+  font-family: "Varela Round", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.button:hover {
+  transform: translate(2px, 2px);
+  cursor: pointer;
+  box-shadow: 2px 2px 0px 0px;
 }

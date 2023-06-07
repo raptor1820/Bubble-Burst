@@ -9,20 +9,18 @@ function driver() {
 async function getUrls(url) {
   const response = await fetch(
     "https://resonant-tube-372613.el.r.appspot.com/?url=" + url
-    // " https://dummy.restapiexample.com/api/v1/employees"
   );
+
   return response.json();
 }
 async function load(url) {
-  const urls = await getUrls(url);
-  const dispArr = [];
-  for (let i = 0; i < 3; i++) {
-    const randomIndex = Math.floor(Math.random() * urls.length);
-    dispArr.push(urls[randomIndex]);
-    urls.splice(randomIndex, 1);
-  }
+  const dispArr = await getUrls(url);
 
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 10; i++) {
+    print(dispArr[i]);
+    if (!dispArr[i]) {
+      chrome.runtime.reload();
+    }
     document.getElementById("title" + i).innerHTML = dispArr[i].title;
     document.getElementById("title" + i).href = dispArr[i].link;
     document.getElementById("origin" + i).innerHTML = dispArr[i].displayLink;
@@ -30,5 +28,6 @@ async function load(url) {
   }
   document.getElementById("loading").style.opacity = "0.0";
   document.getElementById("outer").style.opacity = "1.0";
+  document.getElementById("buttons").style.opacity = "1.0";
 }
 document.addEventListener("DOMContentLoaded", driver);
