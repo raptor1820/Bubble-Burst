@@ -19,7 +19,7 @@ async function load(url) {
   for (let i = 0; i < 10; i++) {
     print(dispArr[i]);
     if (!dispArr[i]) {
-      chrome.runtime.reload();
+      console.log("breaking");
     }
     document.getElementById("title" + i).innerHTML = dispArr[i].title;
     document.getElementById("title" + i).href = dispArr[i].link;
